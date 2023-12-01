@@ -1,18 +1,24 @@
 '''
 --- Part One ---
-You try to ask why they can't just use a weather machine ("not powerful enough") 
-and where they're even sending you ("the sky") and why your map looks mostly blank 
-("you sure ask a lot of questions") and hang on did you just say the sky 
-("of course, where do you think snow comes from") when you realize that the Elves are 
-already loading you into a trebuchet ("please hold still, we need to strap you in").
+You try to ask why they can't just use a weather machine
+("not powerful enough") and where they're even sending you ("the sky") and
+why your map looks mostly blank ("you sure ask a lot of questions")
+and hang on did you just say the sky ("of course,
+where do you think snow comes from") when you realize that the Elves are
+already loading you into a trebuchet ("please hold still,
+we need to strap you in").
 
-As they're making the final adjustments, they discover that their calibration document (your puzzle input) 
-has been amended by a very young Elf who was apparently just excited to show off her art skills. 
+As they're making the final adjustments, they discover that
+their calibration document (your puzzle input)
+has been amended by a very young Elf who was apparently
+just excited to show off her art skills.
 Consequently, the Elves are having trouble reading the values on the document.
 
-The newly-improved calibration document consists of lines of text; 
-each line originally contained a specific calibration value that the Elves now need to recover. 
-On each line, the calibration value can be found by combining the first digit and the last digit (in that order) 
+The newly-improved calibration document consists of lines of text;
+each line originally contained a specific calibration value that
+the Elves now need to recover.
+On each line, the calibration value can be found by combining the first
+digit and the last digit (in that order)
 to form a single two-digit number.
 
 For example:
@@ -21,9 +27,11 @@ For example:
 pqr3stu8vwx
 a1b2c3d4e5f
 treb7uchet
-In this example, the calibration values of these four lines are 12, 38, 15, and 77. Adding these together produces 142.
+In this example, the calibration values of these four lines are 12, 38, 15,
+and 77. Adding these together produces 142.
 
-Consider your entire calibration document. What is the sum of all of the calibration values?
+Consider your entire calibration document. What is the sum of all
+of the calibration values?
 '''
 total = 0
 
@@ -31,24 +39,21 @@ with open('input.txt', 'r') as file:
     input_data = file.read().split()
 
 for line in input_data:
-    list(line)
     line_numbers = []
 
     for char in line:
         try:
             char = int(char)
             line_numbers.append(str(char))
-        except:
+        except ValueError:
             pass
 
     if len(line_numbers) < 2:
         line_numbers = ''.join([line_numbers[0], line_numbers[0]])
-        print(line_numbers)
         total += int(line_numbers)
 
     else:
         line_numbers = ''.join([line_numbers[0], line_numbers[-1]])
-        print(line_numbers)
         total += int(line_numbers)
 
 print(total)
